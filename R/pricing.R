@@ -35,5 +35,5 @@ order_total <- function(items, student_discount = FALSE) {
   }, numeric(1)))
 
   discount <- student_discount_rate(student_discount)
-  round(subtotal * (1 - discount) * 1.1, 2)
+  add_tax(subtotal * (1 - discount))
 }
