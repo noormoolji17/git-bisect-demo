@@ -16,3 +16,4 @@ morning_order <- list(
 )
 
 assert_equal(order_total(morning_order, student_discount = TRUE), 9.5, "discounted morning order")
+assert_equal(order_total(morning_order, stamps = 10), 8.98, "loyalty order")
