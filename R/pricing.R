@@ -24,8 +24,8 @@ line_total <- function(drink, size = "medium", milk = "dairy", shots = 1) {
   round(row$base_price + size_surcharge(size) + milk_surcharge(milk) + extra_shots, 2)
 }
 
-order_total <- function(items, student_discount = FALSE) {
-  subtotal <- sum(vapply(items, function(item) {
+order_subtotal <- function(items) {
+  sum(vapply(items, function(item) {
     line_total(
       drink = item$drink,
       size = item$size,
@@ -33,7 +33,10 @@ order_total <- function(items, student_discount = FALSE) {
       shots = item$shots
     )
   }, numeric(1)))
+}
 
-  discount <- student_discount_rate(student_discount)
+order_total <- function(items, student_discount = FALSE, stamps = 0) {
+  subtotal <- order_subtotal(items)
+  discount <- student_discount_rate(student_discount) + loyalty_discount_rate(stamps)
   add_tax(subtotal * (1 - discount))
 }
