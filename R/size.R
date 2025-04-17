@@ -4,11 +4,8 @@ normalise_size <- function(size) {
   if (key %in% c("small", "s")) {
     return("small")
   }
-  if (key %in% c("medium", "m", "regular")) {
+  if (key %in% c("medium", "m", "regular", "large", "l")) {
     return("medium")
-  }
-  if (key %in% c("large", "l")) {
-    return("large")
   }
 
   stop("Unknown size: ", size)
