@@ -1,6 +1,6 @@
 menu <- data.frame(
-  drink = c("espresso", "latte", "flat white", "mocha", "tea"),
-  base_price = c(3.00, 4.20, 4.10, 4.60, 2.80),
+  drink = c("espresso", "latte", "flat white", "mocha", "tea", "cold brew"),
+  base_price = c(3.00, 4.20, 4.10, 4.60, 2.80, 4.80),
   stringsAsFactors = FALSE
 )
 
