@@ -1,6 +1,7 @@
 source("R/menu.R")
 source("R/discounts.R")
 source("R/loyalty.R")
+source("R/size.R")
 source("R/tax.R")
 source("R/pricing.R")
 source("R/receipts.R")

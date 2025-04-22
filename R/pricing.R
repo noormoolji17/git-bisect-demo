@@ -1,16 +1,3 @@
-size_surcharge <- function(size) {
-  if (size == "small") {
-    return(0)
-  }
-  if (size == "medium") {
-    return(0.70)
-  }
-  if (size == "large") {
-    return(1.10)
-  }
-  stop("Unknown size: ", size)
-}
-
 milk_surcharge <- function(milk) {
   if (milk %in% c("oat", "soy", "almond")) {
     return(0.60)
