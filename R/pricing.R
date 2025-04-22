@@ -1,14 +1,18 @@
 milk_surcharge <- function(milk) {
-  if (milk %in% c("oat", "soy", "almond")) {
+  alternatives <- c("oat", "soy", "almond")
+  if (milk %in% alternatives) {
     return(0.60)
   }
   0
 }
 
+extra_shot_charge <- function(shots) {
+  max(shots - 1, 0) * 0.90
+}
+
 line_total <- function(drink, size = "medium", milk = "dairy", shots = 1) {
   row <- find_menu_item(drink)
-  extra_shots <- max(shots - 1, 0) * 0.90
-  round(row$base_price + size_surcharge(size) + milk_surcharge(milk) + extra_shots, 2)
+  round(row$base_price + size_surcharge(size) + milk_surcharge(milk) + extra_shot_charge(shots), 2)
 }
 
 order_subtotal <- function(items) {
