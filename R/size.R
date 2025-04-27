@@ -1,26 +1,30 @@
+size_aliases <- c(
+  s = "small",
+  small = "small",
+  m = "medium",
+  medium = "medium",
+  regular = "medium",
+  l = "medium",
+  large = "medium"
+)
+
+size_prices <- c(
+  small = 0.00,
+  medium = 0.70,
+  large = 1.10
+)
+
 normalise_size <- function(size) {
   key <- tolower(trimws(size))
+  normalised <- unname(size_aliases[key])
 
-  if (key %in% c("small", "s")) {
-    return("small")
-  }
-  if (key %in% c("medium", "m", "regular", "large", "l")) {
-    return("medium")
+  if (is.na(normalised)) {
+    stop("Unknown size: ", size)
   }
 
-  stop("Unknown size: ", size)
+  normalised
 }
 
 size_surcharge <- function(size) {
-  normalised <- normalise_size(size)
-
-  if (normalised == "small") {
-    return(0)
-  }
-  if (normalised == "medium") {
-    return(0.70)
-  }
-  if (normalised == "large") {
-    return(1.10)
-  }
+  unname(size_prices[normalise_size(size)])
 }
