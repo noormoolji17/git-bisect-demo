@@ -4,8 +4,26 @@ menu <- data.frame(
   stringsAsFactors = FALSE
 )
 
+drink_aliases <- c(
+  fw = "flat white",
+  flatwhite = "flat white",
+  longblack = "espresso",
+  cold = "cold brew"
+)
+
+normalise_drink <- function(drink) {
+  key <- tolower(gsub(" ", "", trimws(drink)))
+  alias <- unname(drink_aliases[key])
+
+  if (is.na(alias)) {
+    return(tolower(trimws(drink)))
+  }
+
+  alias
+}
+
 find_menu_item <- function(drink) {
-  row <- menu[menu$drink == drink, ]
+  row <- menu[menu$drink == normalise_drink(drink), ]
   if (nrow(row) == 0) {
     stop("Unknown drink: ", drink)
   }
