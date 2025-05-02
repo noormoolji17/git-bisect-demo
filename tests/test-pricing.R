@@ -9,6 +9,7 @@ assert_equal <- function(actual, expected, label) {
 assert_equal(line_total("latte", size = "small", milk = "dairy", shots = 1), 4.20, "small latte")
 assert_equal(line_total("latte", size = "large", milk = "oat", shots = 2), 6.80, "large oat latte with extra shot")
 assert_equal(line_total("espresso", size = "medium", milk = "dairy", shots = 2), 4.60, "espresso with extra shot")
+assert_equal(line_total("FW", size = "medium", milk = "dairy", shots = 1), 4.80, "flat white alias")
 
 morning_order <- list(
   list(drink = "latte", size = "large", milk = "oat", shots = 2),
@@ -17,3 +18,4 @@ morning_order <- list(
 
 assert_equal(order_total(morning_order, student_discount = TRUE), 9.5, "discounted morning order")
 assert_equal(order_total(morning_order, stamps = 10), 8.98, "loyalty order")
+assert_equal(order_total(morning_order, coupon = "CAMPUS5"), 10.03, "coupon order")
