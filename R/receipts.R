@@ -12,9 +12,9 @@ receipt_line <- function(item) {
   )
 }
 
-receipt <- function(items, student_discount = FALSE) {
+receipt <- function(items, student_discount = FALSE, stamps = 0, coupon = NULL) {
   c(
     vapply(items, receipt_line, character(1)),
-    paste("Total", format_money(order_total(items, student_discount)))
+    paste("Total", format_money(order_total(items, student_discount, stamps, coupon)))
   )
 }
