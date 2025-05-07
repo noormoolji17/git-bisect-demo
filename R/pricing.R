@@ -26,8 +26,10 @@ order_subtotal <- function(items) {
   }, numeric(1)))
 }
 
-order_total <- function(items, student_discount = FALSE, stamps = 0) {
+order_total <- function(items, student_discount = FALSE, stamps = 0, coupon = NULL) {
   subtotal <- order_subtotal(items)
-  discount <- student_discount_rate(student_discount) + loyalty_discount_rate(stamps)
+  discount <- student_discount_rate(student_discount) +
+    loyalty_discount_rate(stamps) +
+    coupon_discount_rate(coupon)
   add_tax(subtotal * (1 - discount))
 }
