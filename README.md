@@ -13,5 +13,9 @@ Run the checks with:
 Rscript tests/test-pricing.R
 ```
 
-For the bisect exercise, start from the known-good tag and compare it with the
-current broken `HEAD`.
+Bisect starter:
+
+```sh
+git bisect start HEAD known-good
+git bisect run Rscript tests/test-pricing.R
+```
