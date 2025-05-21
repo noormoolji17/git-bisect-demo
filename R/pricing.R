@@ -17,6 +17,7 @@ line_total <- function(drink, size = "medium", milk = "dairy", shots = 1) {
 
 order_subtotal <- function(items) {
   sum(vapply(items, function(item) {
+    validate_item(item)
     line_total(
       drink = item$drink,
       size = item$size,
