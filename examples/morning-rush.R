@@ -6,4 +6,4 @@ orders <- list(
   list(drink = "tea", size = "small", milk = "dairy", shots = 1)
 )
 
-cat(receipt(orders, student_discount = TRUE), sep = "\n")
+cat(receipt(orders, student_discount = TRUE, coupon = "CAMPUS5"), sep = "\n")
