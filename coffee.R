@@ -1,3 +1,4 @@
+source("R/constants.R")
 source("R/menu.R")
 source("R/discounts.R")
 source("R/loyalty.R")

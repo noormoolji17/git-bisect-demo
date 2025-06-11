@@ -1,13 +1,13 @@
 milk_surcharge <- function(milk) {
   alternatives <- c("oat", "soy", "almond")
   if (milk %in% alternatives) {
-    return(0.60)
+    return(alternative_milk_charge)
   }
   0
 }
 
 extra_shot_charge <- function(shots) {
-  max(shots - 1, 0) * 0.90
+  max(shots - 1, 0) * extra_shot_price
 }
 
 line_total <- function(drink, size = "medium", milk = "dairy", shots = 1) {
